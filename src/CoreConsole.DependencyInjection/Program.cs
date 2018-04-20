@@ -22,7 +22,7 @@ namespace CoreConsole.DependencyInjection
             //DI
             var serviceProvider = new ServiceCollection()
             .AddLogging()
-            .AddSingleton<IDataScraper, HttpDataScraper>()
+            .AddSingleton<IDataScrapper, HttpDataScrapper>()
             .BuildServiceProvider();
 
             //configure console logging
@@ -37,8 +37,8 @@ namespace CoreConsole.DependencyInjection
             logger.LogInformation($"Url: {url}");
 
             //do the actual work here
-            var scaper = serviceProvider.GetService<IDataScraper>();
-            var data = scaper.GetData(url);
+            var scrapper = serviceProvider.GetService<IDataScrapper>();
+            var data = scrapper.GetData(url);
 
             Console.WriteLine(data);
 

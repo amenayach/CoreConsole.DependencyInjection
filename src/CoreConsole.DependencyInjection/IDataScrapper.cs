@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json.Linq;
 
-    public interface IDataScraper
+    public interface IDataScrapper
     {
         JToken GetData(string url);
     }
