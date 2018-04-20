@@ -42,7 +42,7 @@ using Microsoft.Extensions.Logging;
 //DI
 var serviceProvider = new ServiceCollection()
 .AddLogging()
-.AddSingleton<IDataScrapper, HttpDataScrapper>()
+.AddSingleton<IDataScraper, HttpDataScraper>()
 .BuildServiceProvider();
 
 //configure console logging
@@ -57,6 +57,6 @@ logger.LogDebug("Starting application");
 logger.LogInformation("Url: " + url);
 
 //do the actual work here
-var scrapper = serviceProvider.GetService<IDataScrapper>();
-var data = scrapper.GetData(url);
+var scraper = serviceProvider.GetService<IDataScraper>();
+var data = scraper.GetData(url);
 ```

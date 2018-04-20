@@ -3,7 +3,7 @@
     using Newtonsoft.Json.Linq;
     using System.Linq;
 
-    public class MockDataScrapper : IDataScrapper
+    public class MockDataScraper : IDataScraper
     {
         public JToken GetData(string url)
         {

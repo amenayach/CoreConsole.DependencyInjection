@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.IO;
-
-namespace CoreConsole.DependencyInjection
+﻿namespace CoreConsole.DependencyInjection
 {
+    using System;
+    using System.IO;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    
     class Program
     {
         static void Main(string[] args)
@@ -22,7 +22,7 @@ namespace CoreConsole.DependencyInjection
             //DI
             var serviceProvider = new ServiceCollection()
             .AddLogging()
-            .AddSingleton<IDataScrapper, HttpDataScrapper>()
+            .AddSingleton<IDataScraper, HttpDataScraper>()
             .BuildServiceProvider();
 
             //configure console logging
@@ -37,7 +37,7 @@ namespace CoreConsole.DependencyInjection
             logger.LogInformation($"Url: {url}");
 
             //do the actual work here
-            var scrapper = serviceProvider.GetService<IDataScrapper>();
+            var scrapper = serviceProvider.GetService<IDataScraper>();
             var data = scrapper.GetData(url);
 
             Console.WriteLine(data);
